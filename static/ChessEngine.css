@@ -14,6 +14,9 @@ td{
 #chessboard_table{
     margin: 0 auto;
 }
+#chessboard_tbody{
+    width: 100%;
+}
 .white_square{
     background-color: #DDDDDD;
     width: 100px;
@@ -26,5 +29,17 @@ td{
 }
 .grid_label{
     font-size: 22px;
-    padding: 0px 6px 0px 6px;
+    padding: 0px 4px 0px 4px;
+}
+#leftpane{
+    float: left;
+    width: 20%;
+}
+#chessboard{
+    float: left;
+    width: 60%;
+}
+#rightpane{
+    float: left;
+    width: 20%;
 }

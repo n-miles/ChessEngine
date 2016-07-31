@@ -1,6 +1,8 @@
 var boardWidth   = 8;
 var boardHeight  = 8;
 var board        = null;
+var clock_white  = 100;
+var clock_black  = 100;
 
 
 
@@ -124,11 +126,32 @@ function drawBoard(board)
 }
 
 
+
 $(document).ready(function() 
 {
     board = new Board(); 
     drawBoard(board);
+    
+    $("#white_clock").empty();
+    $("#white_clock").append(clock_white);
+    $("#black_clock").empty();
+    $("#black_clock").append(clock_black);
+    setInterval(function(){
+        if(clock_white!="N/A" && clock_white!=0)
+        {
+            --clock_white;
+        }
+        if(clock_black!="N/A" && clock_black!=0)
+        {
+            --clock_black;
+        }
+        $("#white_clock").empty();
+        $("#white_clock").append(clock_white);
 
+        $("#black_clock").empty();
+        $("#black_clock").append(clock_black);
+    }, 1000);
 });
+
 
 
