@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RainbowGen</title>
+
+
+</head>
+<body>
+   <div>
+      <div style="overflow-y: scroll; width: 250px; height: 300px;"
+         id="screen"></div>
+      <input type="text" placeholder="Enter Message" id="msg" />
+      <button id="send" onclick="send();">Send</button>
+      <button id="connect" onclick="connect();">Connect</button>
+   </div>
+   <script>
+      var websocket;
+      var uri;
+      if (window.location.hostname === "localhost"){
+         uri = "ws://localhost:8080/imagesocket";
+      } else {
+         uri = "wss://rainbowgen-nmiles.herokuapp.com/imagesocket";
+      }
+      function connect() {
+         if ('WebSocket' in window) {
+            websocket = new WebSocket(uri);
+         } else if ('MozWebSocket' in window) {
+            websocket = new MozWebSocket(uri);
+         } else {
+            alert('WebSocket is not supported by this browser.');
+            return;
+         }
+         websocket.onopen = function() {
+            display('Connected to server.');
+            return false;
+         };
+         websocket.onclose = function() {
+            display('Disconnected from server');
+         };
+         websocket.onmessage = function(event) {
+            display('server says: ' + event.data);
+            return false;
+         };
+      }
+      function send() {
+         var msg = document.getElementById('msg').value;
+         display('Browser Says: ' + msg);
+         websocket.send(msg);
+      }
+      function display(msg) {
+         var screen = document.getElementById('screen');
+         var p = document.createElement('p');
+         p.style.wordWrap = 'break-word';
+         p.appendChild(document.createTextNode(msg));
+         screen.appendChild(p);
+      }
+      connect();
+   </script>
+</body>
+</html>
