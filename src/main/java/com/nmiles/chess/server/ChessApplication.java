@@ -16,8 +16,10 @@ import org.json.simple.parser.JSONParser;
  *
  */
 public class ChessApplication extends WebSocketApplication {
-	/** A blank byte array for sending pings. */
-	private static final byte[] PING_DATA = {};
+	
+	private int whiteId;
+	
+	private int blackId;
 
 	/**
 	 * Called when a connected WebSocket sends a message.
