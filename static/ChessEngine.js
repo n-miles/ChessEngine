@@ -83,7 +83,7 @@ function toggleClass(name)
 function drawBoard(board)
 {
     var lettermap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-    sclass = "white_square";
+    sclass = "black_square";
     var newstr = "";
 
     newstr += "<tr><td class='grid_label'></td>";
