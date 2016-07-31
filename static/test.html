@@ -19,9 +19,9 @@
       var websocket;
       var uri;
       if (window.location.hostname === "localhost"){
-         uri = "ws://localhost:8080/imagesocket";
+         uri = "ws://localhost:8080/chesssocket";
       } else {
-         uri = "wss://rainbowgen-nmiles.herokuapp.com/imagesocket";
+         uri = "wss://rainbowgen-nmiles.herokuapp.com/chesssocket";
       }
       function connect() {
          if ('WebSocket' in window) {

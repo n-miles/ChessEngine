@@ -30,8 +30,8 @@ public class ChessServer {
 				port);
 		server.getListener("grizzly").registerAddOn(new WebSocketAddOn());
 
-		final WebSocketApplication imageMaker = new ChessApplication();
-		WebSocketEngine.getEngine().register("", "/imagesocket", imageMaker);
+		final WebSocketApplication chessGame = new ChessApplication();
+		WebSocketEngine.getEngine().register("", "/chesssocket", chessGame);
 
 		try {
 			server.start();
