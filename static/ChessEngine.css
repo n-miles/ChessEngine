@@ -1,0 +1,20 @@
+body{
+    background-color: #333333;
+    color: #FF2222;
+}
+td{
+    width: 100px;
+    height: 100px;
+}
+#title{
+    text-align: center;
+}
+#chessboard{
+    text-align: center;
+}
+.white_square{
+    background-color: white;
+}
+.black_square{
+    background-color: black;
+}
