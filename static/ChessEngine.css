@@ -3,18 +3,28 @@ body{
     color: #FF2222;
 }
 td{
-    width: 100px;
-    height: 100px;
 }
 #title{
     text-align: center;
 }
 #chessboard{
     text-align: center;
+    margin: 0 auto;
+}
+#chessboard_table{
+    margin: 0 auto;
 }
 .white_square{
-    background-color: white;
+    background-color: #DDDDDD;
+    width: 100px;
+    height: 100px;
 }
 .black_square{
-    background-color: black;
+    background-color: #888888;
+    width: 100px;
+    height: 100px;
+}
+.grid_label{
+    font-size: 22px;
+    padding: 0px 6px 0px 6px;
 }

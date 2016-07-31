@@ -20,6 +20,11 @@ function Board()
                      {
                         this.grid[y*boardWidth +x] = piece;
                      }
+    this.moveTo    = function(fromX, fromY, toX, toY)
+                     {
+                        this.grid[toY*boardWidth + toX] = this.getPiece(fromX, fromY);
+                        this.setPiece(fromX, fromY, null);
+                     }
 
     // time to populate the board with its default piece placement
     //
@@ -62,38 +67,57 @@ function Board()
 
 function toggleClass(name)
 {
-    if(name == "white_sqare")
+    if(name == "white_square")
     {
-        name = "black_sqare";
+        name = "black_square";
     }
     else
     {
-        name= "white_sqare";
+        name= "white_square";
     }
     return name;
 }
 
 function drawBoard(board)
 {
+    var lettermap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     sclass = "white_square";
     var newstr = "";
+
+    newstr += "<tr><td class='grid_label'></td>";
+    for(k=0; k<boardWidth; ++k)
+    {
+        newstr += "<td class='grid_label'>" + lettermap[k] + "</td>";    
+    }
+    newstr += "<tr>";
+
     for(i=0; i<boardHeight; ++i)
     {
-        toggleClass(sclass);
+        sclass = toggleClass(sclass);
         newstr += "<tr>";
-
+        newstr += "<td class='grid_label'>" + (8-i) + "</td>"
         for(j=0; j<boardWidth; ++j)
         {
-            newstr += "<td class='" + toggleClass(sclass) + "'>";
+            newstr += "<td class='" + sclass + "'>";
             if(board.getPiece(j,i) != null)
             {
                 newstr += "<img src='" + board.getPiece(j,i).img + "'/>";
             } 
             newstr += "</td>";
 
+            sclass = toggleClass(sclass);
         }
+        newstr += "<td class='grid_label'>" + (8-i) + "</td>"
         newstr += "</tr>";
     }
+
+    newstr += "<tr><td class='grid_label'></td>";
+    for(k=0; k<boardWidth; ++k)
+    {
+        newstr += "<td class='grid_label'>" + lettermap[k] + "</td>";    
+    }
+    newstr += "<tr>";
+
     $("#chessboard_tbody").empty();
     $("#chessboard_tbody").append(newstr);
 
@@ -104,8 +128,7 @@ $(document).ready(function()
 {
     board = new Board(); 
     drawBoard(board);
+
 });
-
-
 
 
